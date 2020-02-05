@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pages.index');
+});
+Route::get('/single', function () {
+    return view('pages.single');
+});
+Route::get('/contact', function () {
+    return view('pages.contact');
 });
