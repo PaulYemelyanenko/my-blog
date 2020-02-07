@@ -13,9 +13,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(PostRepositoryInterface $posts)
+    public function index(PostRepositoryInterface $repository)
     {
-        return view('pages.index', ['posts' => $posts->getAll()]);
+        return view('pages.index', ['posts' => $repository->getAll()]);
     }
 
     /**
@@ -45,9 +45,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($post, PostRepositoryInterface $repository)
     {
-        //
+        return view('pages.single', ['post' => $repository->getOne($post)]);
     }
 
     /**

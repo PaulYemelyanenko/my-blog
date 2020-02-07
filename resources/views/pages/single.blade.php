@@ -1,10 +1,9 @@
 @extends('layouts/master')
 
 @section('content')
-
     <div id="upper_page">
-        <h1>This is your first blog entry</h1>
-        <p>Donec aliquam eros sagittis ante. Nullam lacinia orci in quam. Donec ac mi a erat ultrices luctus. Integer vulputate, enim ornare ullamcorper mattis, turpis ipsum sagittis risus, id convallis lacus velit vel orci. In sodales nisi a ligula. Phasellus tristique. Nam id velit. Nunc tincidunt porttitor est. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Suspendisse nibh. Nulla facilisi. Curabitur justo justo, congue eget, venenatis vel, ullamcorper et, turpis. Sed eleifend volutpat ipsum. Phasellus egestas. Nulla at tellus. Aliquam dolor. Etiam vel nunc id dolor vehicula pellentesque. Nulla sapien. Fusce ac massa. Ut malesuada tempor lorem.</p>
+        <h1>{{ $post->title }}</h1>
+        <p>{{ $post->content }}</p>
     </div>
     <div id="lower_page">
         <div id="lower_single">

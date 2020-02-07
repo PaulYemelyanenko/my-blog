@@ -11,4 +11,9 @@ class PostRepository implements PostRepositoryInterface
     {
         return Post::all();
     }
+
+    public function getOne($post)
+    {
+        return Post::findOrFail($post);
+    }
 }
