@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.index');
-});
+Route::get('/', 'PostController@index');
+Route::resource('posts', 'PostController')->except('index');
+
 Route::get('/single', function () {
     return view('pages.single');
 });
