@@ -13,6 +13,7 @@ overflow-y:auto;
 font:.8em Arial, Helvetica, sans-serif;
 color:#999;
 text-align:center;
+background-color: black;
 }
 
 #page{
@@ -134,7 +135,6 @@ h1,h2,h3,h4,h5,h6{font-family:"Arial Black";text-transform:uppercase;font-weight
 
 #lower_page h1,#lower_page h2{
 color:#999;
-margin-bottom:-.7em;
 color:#EEE;
 }
 

@@ -2,6 +2,7 @@
 
 
 @section('content')
+
     <div id="upper_page">
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eros. Donec vestibulum, sem id venenatis vulputate, magna metus posuere tortor, a facilisis enim quam non justo. Integer porta massa vitae elit. Integer commodo, libero eu placerat tincidunt, est tellus interdum metus, quis suscipit dui diam quis turpis. Vivamus quis lacus. Aenean quis felis. Aliquam erat volutpat. Nulla non felis. Cras ac mi. Vivamus ac odio nec enim vulputate varius. Aliquam erat volutpat. Nullam semper pulvinar libero. Ut et eros id felis fermentum tincidunt.</p>
     </div>
@@ -40,6 +41,7 @@
                     <input type="text" value="" name="s" class="textfield search" />
                     <input type="submit" id="searchsubmit" value="Search" class="submit_wp" />
                 </div>
+
             </form>
             <h2>Archives</h2>
             <div class="links">

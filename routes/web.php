@@ -18,3 +18,11 @@ Route::resource('posts', 'PostController')->except('index');
 Route::get('/contact', function () {
     return view('pages.contact');
 });
+
+Route::get('/admin', function () {
+    return view('pages.admin');
+})->middleware('is_admin');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
