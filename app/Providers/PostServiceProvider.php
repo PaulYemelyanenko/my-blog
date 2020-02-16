@@ -15,7 +15,10 @@ class PostServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(PostRepositoryInterface::class,PostRepository::class);
+        $this->app->bind(
+            PostRepositoryInterface::class,
+            PostRepository::class
+        );
     }
 
     /**
