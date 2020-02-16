@@ -26,3 +26,19 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(App\Post::class, function (Faker $faker) {
+    return [
+        'title' => $faker->text(30),
+        'description' => $faker->text(50),
+        'content' => $faker->text(200),
+    ];
+});
+
+$factory->define(App\Comment::class, function (Faker $faker) {
+    return [
+        'post_id' => factory(App\Post::class),
+        'user_id' => factory(App\User::class),
+        'comment' => $faker->text(70),
+    ];
+});

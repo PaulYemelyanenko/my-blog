@@ -40,8 +40,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function isAdmin()
     {
         return $this->type === self::ADMIN_TYPE;
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
 }
