@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('title')
+
+    Blog|Admin panel
+
+@endsection
 
 @section('content')
     <div class="container">

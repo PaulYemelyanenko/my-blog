@@ -1,5 +1,11 @@
 @extends('layouts/master')
 
+@section('title')
+
+    {{ $post->title }}
+
+@endsection
+
 @section('content')
     <div id="upper_page">
         <h1>{{ $post->title }}</h1>
