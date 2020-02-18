@@ -16,6 +16,8 @@
                     <p>{{ $post->content }}</p>
                     <h4>Categories: <span class="category"> <a href="#">Misc.</a>, <a href="#">Blog</a>, <a href="#">Template</a></span> <span class="slash">//</span> <a href="#">4 Comments</a></h4>
                 @endforeach
+
+                {{ $posts->links() }}
                 <h1>recent posts</h1>
                 <div class="post_summary">
                     <ul>

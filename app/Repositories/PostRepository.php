@@ -9,7 +9,7 @@ class PostRepository implements PostRepositoryInterface
 {
     public function getAll()
     {
-        return Post::all();
+        return Post::paginate(10);
     }
 
     public function getOne($post)
