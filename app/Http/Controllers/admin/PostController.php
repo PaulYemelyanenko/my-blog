@@ -17,7 +17,7 @@ class PostController extends Controller
     {
         $posts = $repository->getAll();
 
-        return view('pages.admin', compact('posts'));
+        return view('pages.admin.admin', compact('posts'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.admin.create_post');
     }
 
     /**

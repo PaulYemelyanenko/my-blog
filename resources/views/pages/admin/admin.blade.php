@@ -11,7 +11,10 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Posts Dashboard</div>
+                    <div class="card-header">
+                        <span class="post-font"> Posts Dashboard</span>
+                        <a href="admin/posts/create"><button type="button"  class="btn btn-primary float">Create new post</button></a>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
