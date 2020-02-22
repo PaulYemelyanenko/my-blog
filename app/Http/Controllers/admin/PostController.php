@@ -5,9 +5,18 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\PostRepositoryInterface;
+use App\Post;
+use App\Http\Services\ImageService;
 
 class PostController extends Controller
 {
+    protected $image;
+
+    public function __construct(ImageService $service)
+    {
+        $this->image = $service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +24,9 @@ class PostController extends Controller
      */
     public function index(PostRepositoryInterface $repository)
     {
+        //For edit-post page, when we click Edit need to redirect on two page back
+        request()->session()->put('editBackUrl', request()->fullUrl());
+
         $posts = $repository->getAll();
 
         return view('pages.admin.admin', compact('posts'));
@@ -27,7 +39,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.create_post');
+        return view('pages.admin.create-post');
     }
 
     /**
@@ -36,9 +48,18 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $image_path = $this->image->store($request);
+
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->content = $request->content;
+        $post->image = $image_path;
+
+        $post->save();
+
+        return redirect('/admin');
     }
 
     /**
@@ -58,9 +79,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, PostRepositoryInterface $repository)
     {
-        //
+        $post = $repository->getOne($id);
+
+        return view('pages.admin.edit-post', compact('post', $post));
     }
 
     /**
@@ -70,9 +93,16 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, PostRepositoryInterface $repository, $id)
     {
-        //
+       $post = $repository->getOne($id);
+       $post->title = $request->input('title');
+       $post->description = $request->input('description');
+       $post->content = $request->input('content');
+
+       $post->save();
+
+       return $request->session()->has('editBackUrl') ? redirect(session('editBackUrl')) : redirect('/admin');
     }
 
     /**
@@ -83,6 +113,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::findOrFail($id)->delete();
+
+        return back();
     }
 }

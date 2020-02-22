@@ -12,8 +12,8 @@ class PostRepository implements PostRepositoryInterface
         return Post::paginate(10);
     }
 
-    public function getOne($post)
+    public function getOne($id)
     {
-        return Post::findOrFail($post);
+        return Post::findOrFail($id);
     }
 }

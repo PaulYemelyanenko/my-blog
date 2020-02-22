@@ -13,7 +13,7 @@
                 <div class="card">
                     <div class="card-header">
                         <span class="post-font"> Posts Dashboard</span>
-                        <a href="admin/posts/create"><button type="button"  class="btn btn-primary float">Create new post</button></a>
+                        <a href="{{ url('admin/posts/create') }}"><button type="button"  class="btn btn-primary float">Create new post</button></a>
                     </div>
 
                     <div class="card-body">
@@ -38,8 +38,12 @@
                                             <th scope="row">{{ $post->id }}</th>
                                             <td>{{ $post->title }}</td>
                                             <td><button type="button" class="btn btn-info">Comments</button></td>
-                                            <td><button type="button" class="btn btn-primary">Edit</button></td>
-                                            <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                            <td><a href="{{ url('admin/posts/' . $post->id . '/edit') }}"><button type="button" class="btn btn-primary">Edit</button></td>
+                                            <td>
+                                                {!! Form::open(['url' => 'admin/posts/' . $post->id, 'method' => 'delete']) !!}
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                {!! Form::close() !!}
+                                            </td>
                                         </tr>
                                     @endforeach
 
@@ -51,4 +55,25 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+
+{{--    <script>--}}
+{{--        $(document).ready(function() {--}}
+{{--            $.ajaxSetup({--}}
+{{--                headers: {--}}
+{{--                    'X-CSRF-TOKEN': '{{ csrf_token() }}'--}}
+{{--                }--}}
+{{--            });--}}
+{{--            $("#delete").click(function () {--}}
+{{--                let id = $(this).attr('data-id');--}}
+{{--                $.ajax({--}}
+{{--                    url: '/admin/posts/' + id,--}}
+{{--                    method: 'DELETE'--}}
+{{--                });--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
+
 @endsection

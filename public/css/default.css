@@ -327,3 +327,7 @@ font:1.2em Arial, Helvetica, sans-serif;
 font-weight:bold;
 color:#DDD;
 }
+
+.img img{
+    width: 425px;
+}
