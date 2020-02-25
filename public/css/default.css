@@ -29,9 +29,9 @@ text-align:left;
 
 #header{
 width:755px;
-height:180px;
+height:290px;
 padding:0;
-background:url(../images/header.jpg) no-repeat top left #000;
+background:url(../images/laravel_blue_755_315.jpg) no-repeat top center #000;
 }
 
 #lower_page{
@@ -67,11 +67,11 @@ padding:0;
 /* NAV MENU */
 
 #header h1{
-margin:0 20px 0 0;
+margin:0 26px 0 0;
 padding:0;
 color:#999;
-text-align:center;
-font-size:58px;
+float: right;
+font-size:39px;
 line-height:48px;
 }
 
@@ -87,7 +87,7 @@ width:100%;
 
 #header li{
 float:right;
-padding-right:10px;
+padding-right:15px;
 }
 
 #header li a{
@@ -330,4 +330,8 @@ color:#DDD;
 
 .img img{
     width: 425px;
+}
+
+#span_blog{
+    margin-left: 30px;
 }

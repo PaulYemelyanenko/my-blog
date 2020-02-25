@@ -1,0 +1,37 @@
+<?php
+
+$data = []; // в этот массив запишем то, что выберем из базы
+
+$result = mysqli_query("SELECT * FROM pedestrianWays"); // сделаем запрос в БД
+while($row = mysqli_fetch_assoc($result)){ // оформим каждую строку результата
+    // как ассоциативный массив
+    $data[] = $row; // допишем строку из выборки как новый элемент результирующего массива
+}
+echo json_encode($data); // и отдаём как json
+
+
+
+
+//вариант 2
+$.ajax({
+    url: url.to.php.file,
+    type: 'POST',
+    data: {
+    // тут пишите данные в виде массива по которым нужно отфильтровать, что-то...
+},
+    dataType: 'json',
+    contentType: 'application/json',
+    json: true
+}).done(function(data){
+    console.log(data);
+}).always(function(dataError){
+    console.log(dataError);
+});
+
+//Код PHP который отдаст вам JSON
+<?php
+    // тут пишите основной код запроса к базе данных и потом его вставляете в виде массива в переменную $resultJson
+    header('Content-Type: application/json');
+    $resultJson = array("text" => "Hello!");
+    echo json_encode($resultJson);
+?>
