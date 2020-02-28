@@ -3,6 +3,8 @@
 namespace App\Http\Services;
 
 
+use Intervention\Image\Facades\Image;
+
 class ImageService
 {
     /**
@@ -21,6 +23,13 @@ class ImageService
     public function assetStoragePath($dir)
     {
         return 'storage/' . substr($dir, 7);
+    }
+
+    public function resizeImages($posts)
+    {
+        foreach($posts as $post){
+            Image::make($post->image)->resize(730, 290)->save($post->image);
+        }
     }
 
 }

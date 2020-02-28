@@ -6,6 +6,16 @@
 
 @endsection
 
+@section('style')
+
+    <style>
+        #header{
+            background:url({{ asset($post->image) }}) no-repeat top center #000;
+        }
+    </style>
+
+@endsection
+
 @section('content')
     <div id="upper_page">
         <h1>{{ $post->title }}</h1>

@@ -21,7 +21,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-                        <form action="{{ url('admin/posts/' . $post->id) }}" method="POST">
+                        <form action="{{ url('admin/posts/' . $post->id) }}" method="POST" enctype="multipart/form-data">
                             @method('PUT')
                             @csrf
                             <div class="form-group">
@@ -35,6 +35,10 @@
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">Content</label>
                                 <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3">{{ $post->content ?? '' }}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="imageFormControlInput3">Image</label>
+                                <input type="file" name="image" class="form-control" id="imageFormControlInput3" required>
                             </div>
                             <button type="submit"  class="btn btn-primary float">Edit</button>
                         </form>

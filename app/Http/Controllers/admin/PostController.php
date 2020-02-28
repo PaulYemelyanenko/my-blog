@@ -45,7 +45,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Post $post)
@@ -65,7 +65,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -76,7 +76,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id, PostRepositoryInterface $repository)
@@ -89,26 +89,30 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, PostRepositoryInterface $repository, $id)
     {
-       $post = $repository->getOne($id);
-       $post->title = $request->input('title');
-       $post->description = $request->input('description');
-       $post->content = $request->input('content');
+        $image_path = $this->image->store($request);
 
-       $post->save();
+        $post = $repository->getOne($id);
+        $post->title = $request->input('title');
+        $post->description = $request->input('description');
+        $post->content = $request->input('content');
+        $post->image = $image_path;
 
-       return $request->session()->has('editBackUrl') ? redirect(session('editBackUrl')) : redirect('/admin');
+
+        $post->save();
+
+        return $request->session()->has('editBackUrl') ? redirect(session('editBackUrl')) : redirect('/admin');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
