@@ -16,4 +16,8 @@ class PostRepository implements PostRepositoryInterface
     {
         return Post::findOrFail($id);
     }
+    public function getRecentPosts($ids)
+    {
+        return Post::whereIn('id', $ids)->get();
+    }
 }

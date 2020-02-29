@@ -1,15 +1,11 @@
 @extends('layouts.master')
 
-
 @section('content')
 
     <div id="upper_page">
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed eros. Donec vestibulum, sem id venenatis
-            vulputate, magna metus posuere tortor, a facilisis enim quam non justo. Integer porta massa vitae elit.
-            Integer commodo, libero eu placerat tincidunt, est tellus interdum metus, quis suscipit dui diam quis
-            turpis. Vivamus quis lacus. Aenean quis felis. Aliquam erat volutpat. Nulla non felis. Cras ac mi. Vivamus
-            ac odio nec enim vulputate varius. Aliquam erat volutpat. Nullam semper pulvinar libero. Ut et eros id felis
-            fermentum tincidunt.</p>
+        <p>Blog about the PHP Framework for Web Artisans. <br> Laravel is a web application framework with expressive,
+            elegant syntax. We’ve already laid the foundation —
+            freeing you to create without sweating the small things.</p>
     </div>
     <div id="lower_page">
         <div id="lower_left">
@@ -30,17 +26,10 @@
             <h1>recent posts</h1>
             <div class="post_summary">
                 <ul>
-                    <li><a href="#"> <span class="ps_title">Vestibulum interdum sem ac dui.</span> <br/>
-                            <span class="ps_plain">Posted on December 5th, 2006 with 2 Comments</span></a></li>
-                    <li><a href="#"> <span class="ps_title">Aliquam ullamcorper congue massa.</span> <br/>
-                            <span class="ps_plain">Posted on December 4th, 2006 with 12 Comments</span></a></li>
-                    <li><a href="#"> <span class="ps_title">Quisque fermentum sapien vel ante.</span> <br/>
-                            <span class="ps_plain">Posted on December 2nd, 2006 with 4 Comments</span></a></li>
-                    <li><a href="#"> <span class="ps_title">Maecenas pretium leo eget lectus.</span> <br/>
-                            <span class="ps_plain">Posted on November 23rd, 2006 with 2 Comments</span></a></li>
-                    <li><a href="#"> <span class="ps_title">Cras sagittis. Pellentesque dictum bibendum leo.</span>
-                            <br/>
-                            <span class="ps_plain">Posted on November 18th, 2006 with 8 Comments</span></a></li>
+                    @foreach($recent_posts as $post)
+                        <li><a href="posts/{{ $post->id }}"> <span class="ps_title">{{ $post->title }}</span> <br/>
+                                <span class="ps_plain">Posted on {{ date('F jS, o', strtotime($post->created_at)) }}</span></a></li>
+                    @endforeach
                 </ul>
             </div>
         </div>

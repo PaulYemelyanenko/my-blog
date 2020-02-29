@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\PostService;
 use App\Http\Services\ImageService;
 use App\Post;
 use Illuminate\Http\Request;
@@ -10,11 +11,13 @@ use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
-    protected $image;
+    protected $image_service;
+    protected $post_service;
 
-    public function __construct(ImageService $service)
+    public function __construct(ImageService $image, PostService $post)
     {
-        $this->image = $service;
+        $this->image_service = $image;
+        $this->post_service = $post;
     }
 
     /**
@@ -25,9 +28,13 @@ class PostController extends Controller
     public function index(PostRepositoryInterface $repository)
     {
         $posts = $repository->getAll();
-        $this->image->resizeImages($posts);
 
-        return view('pages.index', compact('posts', $posts));
+        $this->image_service->resizeImages($posts);
+
+        return view('pages.index', [
+            'posts' => $posts,
+            'recent_posts' => $this->post_service->getRecentPosts()
+        ]);
     }
 
     /**
@@ -60,6 +67,8 @@ class PostController extends Controller
     public function show($id, PostRepositoryInterface $repository)
     {
         $post = $repository->getOne($id);
+
+        $this->post_service->saveRecentPost($id);
 
         return view('pages.single', compact('post', $post));
     }
