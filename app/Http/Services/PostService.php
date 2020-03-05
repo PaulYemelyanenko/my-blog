@@ -18,7 +18,7 @@ class PostService
 
     public function getRecentPosts()
     {
-        return $this->repository->getRecentPosts(session('recent_post_ids'));
+        return $this->repository->getRecentPosts(session('recent_post_ids') ?? []);
     }
 
     public function saveRecentPost($id)
@@ -32,6 +32,11 @@ class PostService
         }
         session()->save();
 
+    }
+
+    public function search($request)
+    {
+        return $this->repository->searchAllPosts($request);
     }
 
 

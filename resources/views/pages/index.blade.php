@@ -39,7 +39,7 @@
                 (click the first blog entry to the left).</p>
             <p>The header image was drawn by the extremely talented artist Jacob Sjoman and he graciously allowed me to
                 use it.</p>
-            <form method="get" action="#">
+            <form method="get" action="/search">
                 <div>
                     <input type="text" value="" name="s" class="textfield search"/>
                     <input type="submit" id="searchsubmit" value="Search" class="submit_wp"/>

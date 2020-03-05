@@ -20,6 +20,8 @@ Route::middleware('is_admin')->group(function () {
 });
 
 
+Route::get('/search', 'PostController@search');
+
 Route::get('/contact', function () {
     return view('pages.contact');
 });

@@ -106,4 +106,10 @@ class PostController extends Controller
     {
         //
     }
+
+    public function search(Request $request)
+    {
+//        dd($this->post_service->search($request->get('s')));
+        return view('pages.search-results', ['posts' => $this->post_service->search($request->get('s'))]);
+    }
 }
